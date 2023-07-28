@@ -43,10 +43,10 @@ const config = {
 
         nodes: [
             {
-                identifier: "Jaosua",
-                host: "0.0.0.0",
+                identifier: "Licha",
+                host: "",
                 port: 2333,
-                password: "rta_music",
+                password: "",
                 secure: false,
                 version: "v4",
                 regions: ["us-east", "us-central", "us-south", "us-west", "singapore"]
