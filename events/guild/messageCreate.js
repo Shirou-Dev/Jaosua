@@ -80,6 +80,7 @@ module.exports = async (client, message) => {
                         voiceChannel: message.member.voice.channel.id,
                         textChannel: message.channel.id,
                         volume: 60,
+                        region: channel?.rtcRegion || undefined,
                         selfDeafen: true
                     });
                         player.connect()

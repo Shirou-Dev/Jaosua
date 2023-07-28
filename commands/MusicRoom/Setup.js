@@ -3,7 +3,7 @@ const { EmbedBuilder } = require('discord.js');
 module.exports = {
     data: {
         name: "สร้างห้องเพลง",
-        description: "ระบบสร้างห้องเล่นเพลง Rotia-Room",
+        description: "ระบบสร้างห้อง Jaosua-MusicRoom",
         default_member_permissions: "5"
     },
 

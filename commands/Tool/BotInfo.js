@@ -22,21 +22,18 @@ const errorReply = new EmbedBuilder();
         try {
 
              if (interaction.commandName === 'ข้อมูลบอท') {
-                 const DcButton = new ActionRowBuilder()
+                 const DcInviteButton = new ActionRowBuilder()
                      .addComponents(
-                         new ButtonBuilder()
-                             .setURL(`${client.config.dcurl}`)
-                             .setEmoji('1068597419912204469')
-                             .setLabel('Rotia | Support')
-                             .setStyle(ButtonStyle.Link),
-                     );
-                 const InviteButton = new ActionRowBuilder()
-                 .addComponents(
-                         new ButtonBuilder()
-                             .setURL(`${client.config.inviteurl}`)
-                             .setLabel('เชิญบอท')
-                             .setEmoji('1068583137971552336')
-                             .setStyle(ButtonStyle.Link),
+                        new ButtonBuilder()
+                            .setURL(`${client.config.dcurl}`)
+                            .setEmoji('1068597419912204469')
+                            .setLabel('Rotia Support')
+                            .setStyle(ButtonStyle.Link),
+                        new ButtonBuilder()
+                            .setURL(`${client.config.inviteurl}`)
+                            .setLabel('เชิญบอท')
+                            .setEmoji('1068583137971552336')
+                            .setStyle(ButtonStyle.Link),
                      );
                 
             var node = client.manager.nodes.first(1)
@@ -48,12 +45,12 @@ const errorReply = new EmbedBuilder();
                 const RTA_BotInfo = new EmbedBuilder()
                 .setAuthor({name: `${client.user.username} Info`, iconURL: client.user.displayAvatarURL()})
                 .setColor('White')
-                .addFields({ name: 'รายละเอียดเครื่องเชิฟเวอร์', value: `\`\`\`css\nซีพียู: Intel Core I7-9700\nเเรมกําลังใช้งาน: ${prettyBytes(process.memoryUsage().heapUsed)}\nเเรมลิมิต: ${prettyBytes(os.totalmem())}\`\`\``, inline: false },)
+                .addFields({ name: 'รายละเอียดเครื่องเชิฟเวอร์', value: `\`\`\`css\nซีพียู: ${os.cpus()[0].model}\nซีพียูโหลด: ${(os.loadavg()[0]).toFixed(2)}%\nเเรมกําลังใช้งาน: ${prettyBytes(process.memoryUsage().heapUsed)} / ${prettyBytes(os.totalmem())}\`\`\``, inline: false },)
                 .addFields({ name: 'ข้อมูลเชิฟเวอร์ & จํานวนคน', value: `\`\`\`css\nเชิฟเวอร์: ${client.guilds.cache.size} เชิฟเวอร์\nสมาชิก: ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} คน\nห้องเเชท: ${client.channels.cache.size} ห้อง\`\`\``, inline: false },)
                 .addFields({ name: 'สถานะบอท', value: `\`\`\`css\nNode Status: ${node_connect}\nเชื่อมต่อ: ${node_Players} ห้อง\nกําลังเล่น: ${node_playingPlayers} ห้อง\`\`\``, inline: true },)
                 .setFooter({ text: `Uptime : ${moment.duration(client.uptime).format(" d [วัน] h [ชั่วโมง] m [นาที] s [วินาที] ")}`, })
 
-                await interaction.reply({ embeds: [RTA_BotInfo], components: [DcButton, InviteButton] })
+                await interaction.reply({ embeds: [RTA_BotInfo], components: [DcInviteButton] })
         }
 
         } catch (e) {

@@ -67,7 +67,7 @@ try {
                      guild: interaction.guild.id,
                      voiceChannel: interaction.member.voice.channel.id,
                      textChannel: interaction.channel.id,
-                     //region: channel?.rtcRegion || undefined,
+                     region: channel?.rtcRegion || undefined,
                      selfDeafen: true,
                 });
              }
@@ -88,7 +88,6 @@ try {
                     }
                 }
 
-console.log(res)
              switch (res.loadType) {
                  case 'error':
                      await interaction.reply({ embeds: [new EmbedBuilder() .setDescription(`❌ \`|\` ไม่พบเพลงที่กําลังค้นหา \n\`${music}\``) .setColor("Red") ], iconURL: interaction.user.displayAvatarURL(), ephemeral: false })
@@ -111,7 +110,7 @@ console.log(res)
 
                          const RTA_AddQueue3 = new EmbedBuilder()
 
-                         .setAuthor({ name: `Rotia Player | Add Queue`, iconURL: client.user.displayAvatarURL() })
+                         .setAuthor({ name: `${client.user.username} Player | Add Queue`, iconURL: client.user.displayAvatarURL() })
                          .setColor('White')
                          .addFields({ name: `${res.tracks[0].author} - ${res.tracks[0].isStream ? "🔴 ไลฟ์สด" : moment.duration(res.tracks[0].duration).format('hh:mm:ss')}`, value: `\`\`\`\n${res.tracks[0].title}\`\`\``, inline: false })
                          .setImage('https://cdn.discordapp.com/attachments/1129726217101250661/1130838816899481740/image.png')
@@ -131,7 +130,7 @@ console.log(res)
                              player.play();
 
                          const RTA_AddPlaylist = new EmbedBuilder()
-                             .setAuthor({ name: `Rotia Player | Add Playlist`, iconURL: client.user.displayAvatarURL() })
+                             .setAuthor({ name: `${client.user.username} Player | Add Playlist`, iconURL: client.user.displayAvatarURL() })
                              .setColor('White')
                              .addFields({ name: `${res.tracks.author} - ${res.tracks.isStream ? "🔴 ไลฟ์สด" : moment.duration(res.playlist.duration).format('hh:mm:ss')}`, value: `\`\`\`\n${res.playlist.name}\`\`\``, inline: false })
                              .setImage('https://cdn.discordapp.com/attachments/1129726217101250661/1130838816899481740/image.png')
@@ -150,7 +149,7 @@ console.log(res)
                                  player.play();
     
                              const RTA_AddQueue2 = new EmbedBuilder()
-                                 .setAuthor({ name: `Rotia Player | Add Search Music`, iconURL: client.user.displayAvatarURL() })
+                                 .setAuthor({ name: `${client.user.username} Player | Add Search Music`, iconURL: client.user.displayAvatarURL() })
                                  .setColor('White')
                                  .addFields({ name: `${res.tracks[0].author} - ${res.tracks[0].isStream ? "🔴 ไลฟ์สด" : moment.duration(res.tracks[0].duration).format('hh:mm:ss')}`, value: `\`\`\`\n${res.tracks[0].title}\`\`\``, inline: false })
                                  .setImage('https://cdn.discordapp.com/attachments/1129726217101250661/1130838816899481740/image.png')
