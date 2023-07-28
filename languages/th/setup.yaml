@@ -9,7 +9,7 @@ setup_nowplay: "Jaosua Player | กําลังเล่นเพลง"
 setup_songpause: "Jaosua Player | หยุดชั่วคราว"
 setup_playembed_image: "https://media.discordapp.net/attachments/1133050098981548052/1134135544717262938/somboytiger_5.png?width=1440&height=427"
 setup_playembed_desc: ">>> [Invite](https://discord.com/api/oauth2/authorize?client_id=%{clientId}&permissions=2184310032&scope=bot%20applications.commands) | [Support](https://discord.gg/SNG3dh3MbR) | [Website](https://adivise.github.io/Stylish/)"
-setup_playembed_footer: "คำนำหน้าคือ: %{prefix}"
+setup_playembed_footer: "https://linktr.ee/shirouproject"
 ##### Setup Update Handler #####
 setup_author: "Jaosua Player"
 setup_author_icon: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
