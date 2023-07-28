@@ -18,7 +18,7 @@ const config = {
 
         nodes: [
             {
-                identifier: "RTA-Lavalink [DEV]",
+                identifier: "RTA-Lavalink",
                 host: "",
                 port: 2333,
                 password: "",
