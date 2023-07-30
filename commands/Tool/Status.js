@@ -24,6 +24,9 @@ require("moment-duration-format");
                             name: 'Player', value: 'player'
                         },
                         {
+                            name: 'Player-Dev', value: 'playerdev'
+                        },
+                        {
                             name: 'Node', value: 'node'
                         }
                     ],
@@ -49,7 +52,7 @@ require("moment-duration-format");
                     embeds: [new EmbedBuilder()
                         .setColor("Red")
                         .setFooter({ text: client.user.username + " | Version " + client.config.version, iconURL: client.user.displayAvatarURL() })
-                        .setTitle(`กรุณาเข้าห้องเสียงก่อนใช้งานบอท`)
+                        .setTitle(`กรุณาเข้าห้องเสียงก่อนใช้งานคําสั่งนี้`)
                     ], ephemeral: false
                 });
             }
@@ -69,7 +72,7 @@ require("moment-duration-format");
                         .setColor('White')
                         .addFields(
                             {
-                                name: `${interaction.guild.name}`,
+                                name: `${interaction.guild.name} [ <#${player.voiceChannel}> ]`,
                                 value: `\`\`\`css\nPing Player: ${player.wsPing} ms\nPlayer Region: ${channel?.rtcRegion || undefined}\nPlayer Connected: ${player.connected}\`\`\``,
                                 inline: true,
                             }
@@ -77,6 +80,36 @@ require("moment-duration-format");
                     ]
                 })
 
+        } else if(pingfunction === 'playerdev') {
+
+            if (interaction.user.id !== '876524312344014890')
+            return interaction.reply({
+                embeds: [new EmbedBuilder()
+                    .setColor("Red")
+                    .setFooter({ text: client.user.username + " | Version " + client.config.version, iconURL: client.user.displayAvatarURL() })
+                    .setTitle(`คุณไม่ใช่เจ้าของคําสั่งนี้!`)
+                ], ephemeral: false
+            });
+
+            const RTA_PlayerDev = client.manager.players.map((player) => {
+
+            const guild = client.guilds.cache.get(player.guild)
+
+                return {
+                            name: `${guild.name}`,
+                            value: `\`\`\`css\nPing Player: ${player.wsPing} ms\nPlayer Region: ${player?.region || undefined}\nPlayer Connected: ${player.connected}\`\`\``,
+                            inline: true,
+                        }
+                    })
+
+            await interaction.reply({
+                embeds: [new EmbedBuilder()
+                    .setAuthor({ name: `${client.user.username}`, iconURL: client.user.displayAvatarURL() })
+                    .setDescription('**__All Player Status__**')
+                    .setColor('White')
+                    .addFields(RTA_PlayerDev)
+                ]
+            })
         } else if(pingfunction === 'node') {
 
             const RTA_Node = client.manager.nodes.map((node) => {
@@ -98,6 +131,7 @@ require("moment-duration-format");
         }
 
         } catch (e) {
+            console.log(e)
             client.logger.danger(e)
             errorReply.setColor('Red').setDescription('เกิดข้อผิดพลาดในการใช้คําสั่ง โปรดลองใช้คําสั่งอีกครั้ง');
             return interaction.reply({ embeds: [errorReply],  ephemeral: true });
