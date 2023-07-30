@@ -73,7 +73,7 @@ require("moment-duration-format");
                         .addFields(
                             {
                                 name: `${interaction.guild.name} [ <#${player.voiceChannel}> ]`,
-                                value: `\`\`\`css\nPing Player: ${player.wsPing} ms\nPlayer Region: ${channel?.rtcRegion || undefined}\nPlayer Connected: ${player.connected}\`\`\``,
+                                value: `\`\`\`css\nPing Player: ${player.wsPing} ms\nPlayer Connected: ${player.connected}\`\`\``,
                                 inline: true,
                             }
                         )
@@ -97,7 +97,7 @@ require("moment-duration-format");
 
                 return {
                             name: `${guild.name}`,
-                            value: `\`\`\`css\nPing Player: ${player.wsPing} ms\nPlayer Region: ${player?.region || undefined}\nPlayer Connected: ${player.connected}\`\`\``,
+                            value: `\`\`\`css\nPing Player: ${player.wsPing} ms\nPlayer Connected: ${player.connected}\`\`\``,
                             inline: true,
                         }
                     })
