@@ -3,9 +3,9 @@ require("dotenv").config();
 const config = {
     development: {
         LEAVE_TIMEOUT: parseInt(process.env.LEAVE_TIMEOUT || "30000"),
-        MONGO_URI: "mongodb+srv://rtabetadb:RTA_1974@rta-beta-cluster.gjar3u2.mongodb.net/",
+        MONGO_URI: "/",
         version: require("./package.json").version,
-        token: "MTEzNDEyNjM3NjE3MDA0MTQ0NQ.GsF8NG.3LRhjGUtSdw9fDgo8TCTqtT6vykRQmC4j6YmJM",
+        token: "",
         YOUTUBE_API: "AIzaSyDjmtXRDGkK2o1gjCuNunuAoEcRFIXVxqc",
         clientId: "1134126376170041445",
         dcurl: "https://discord.gg/TrPfMEwwVY",
@@ -28,9 +28,9 @@ const config = {
     },
     production: {
         LEAVE_TIMEOUT: parseInt(process.env.LEAVE_TIMEOUT || "30000"),
-        MONGO_URI: "mongodb+srv://jsa_db:JSA-1441@jsa-db.dthcl7b.mongodb.net/",
+        MONGO_URI: "",
         version: require("./package.json").version,
-        token: "MTEzNDEyNjM3NjE3MDA0MTQ0NQ.GsF8NG.3LRhjGUtSdw9fDgo8TCTqtT6vykRQmC4j6YmJM",
+        token: "",
         clientId: "1134126376170041445",
         YOUTUBE_API: "AIzaSyDjmtXRDGkK2o1gjCuNunuAoEcRFIXVxqc",
         dcurl: "https://discord.gg/TrPfMEwwVY",
