@@ -9,16 +9,16 @@ const errorReply = new EmbedBuilder();
 
 module.exports = {
     data: {
-        name: "เล่นวนลูปเพลง",
-        description: "ฟังก์ชั่น Loop ต่างๆ",
+        name: "เล่นวนลูป",
+        description: "ฟังก์ชั่น / Function Loop",
         options: [
             {
                 name: "type",
                 type: 3,
-                description: "🔁 เลือกฟังก์ชั่น วนลูป",
+                description: "🔁 เลือกฟังก์ชั่น Loop",
                 choices: [
                     {
-                        name: 'วนลูปเพลง', value: 'song'
+                        name: 'วนลูปเพลงเดียว', value: 'song'
                     },
                     {
                         name: 'วนลูปคิวเพลง', value: 'queue'
@@ -38,83 +38,146 @@ module.exports = {
             
         if (!channel) {
             return interaction.reply({
-                embeds: [new EmbedBuilder()
-                    .setColor('Red')
-                    .setFooter({ text: client.user.username + " | Version " + client.config.version, iconURL: client.user.displayAvatarURL() })
-                    .setTitle(`กรุณาเข้าห้องเสียงก่อนใช้งานบอท`)
+                embeds: [
+                    {
+                        color: #FF0000,
+                        title: "กรุณาเข้าห้องเสียงก่อนใช้งานบอท",
+                        footer: {
+                            text: client.user.username + " | Version " + client.config.version,
+                            icon_url: client.user.displayAvatarURL(),
+                        }
+                    }
                 ], ephemeral: false
             });
         }
 
         if (player && channel.id !== player.voiceChannel)
             return interaction.reply({
-                embeds: [new EmbedBuilder()
-                    .setColor("Red")
-                    .setFooter({ text: client.user.username + " | Version " + client.config.version, iconURL: client.user.displayAvatarURL() })
-                    .setTitle(`กรุณาเข้าห้องเสียงเดียวกับบอท ${client.user.username}`)
-                    .setDescription(`<#${player.voiceChannel}>`)
+                embeds: [
+                    {
+                        color: #FF0000,
+                        title: `กรุณาเข้าห้องเสียงเดียวกับบอท ${client.user.username}`,
+                        description: `<#${player.voiceChannel}>`,
+                        footer: {
+                            text: client.user.username + " | Version " + client.config.version,
+                            icon_url: client.user.displayAvatarURL(),
+                        }
+                    }
                 ], ephemeral: false
             });
-
+        
         if (!player) return interaction.reply({
-            embeds: [new EmbedBuilder()
-                .setColor('Red')
-                .setFooter({ text: client.user.username + " | Version " + client.config.version, iconURL: client.user.displayAvatarURL() })
-                .setTitle(`${client.user.username} ไม่ได้เล่นเพลงอยู่ในขณะนี้`)
-            ], ephemeral: false
-        });
+                embeds: [
+                    {
+                        color: #FF0000,
+                        title:`ไม่ได้เล่นเพลงอยู่ในขณะนี้ ${client.user.username}`,
+                        footer: {
+                            text: client.user.username + " | Version " + client.config.version,
+                            icon_url: client.user.displayAvatarURL()
+                        }
+                    }
+                ], ephemeral: false
+            });
 
         try {
             queue = client.SIRUManager.players.get(interaction.guild.id)
 
             if(!queue) return interaction.reply({
-                embeds: [new EmbedBuilder()
-                    .setAuthor({ name: `❌ | ไม่มีเพลงในคิว ณ ขณะนี้!`, iconURL: interaction.user.displayAvatarURL() })
-                    .setColor('Red')
-                ],
+                embeds: [
+                    {
+                        color: #FF0000,
+                        author: {
+                            name: '❌ | ไม่มีเพลงในคิว!!',
+                            icon_url: interaction.user.displayAvatarURL(),
+                        }
+                    }
+                ]
             })
 
             if(loopfunction === 'song') {
+
                 if (player.trackRepeat === false) {
+
                     await player.setTrackRepeat(true)
 
-                    const RTA_Loopped = new EmbedBuilder()
-                        .setAuthor({ name: `✅ | เปลี่ยนการวนเพลงเป็น \`เปิด Song-Loop\` เรียบร้อย`, iconURL: interaction.user.displayAvatarURL() })
-                        .setColor('Green')
+                    return interaction.reply({
+                        embeds: [
+                            {
+                                color: rgb(0,255,0),
+                                author: {
+                                    name: '✅ | \`On Song-Loop\`',
+                                    icon_url: interaction.user.displayAvatarURL(),
+                                }
+                            }
+                        ], ephemeral: true
+                    });
 
-                    return interaction.reply({ embeds: [RTA_Loopped] });
             } else {
+
                 await player.setTrackRepeat(false)
 
-                const RTA_Loopped = new EmbedBuilder()
-                    .setAuthor({ name: `✅ | เปลี่ยนการวนเพลงเป็น \`ปิด Song-Loop\` เรียบร้อย`, iconURL: interaction.user.displayAvatarURL() })
-                    .setColor('Green')
-
-                return interaction.reply({ embeds: [RTA_Loopped] });
+                return interaction.reply({
+                    embeds: [
+                        {
+                            color: #FF0000,
+                            author: {
+                                name: '❌ | \`Off Song-Loop\`',
+                                icon_url: interaction.user.displayAvatarURL(),
+                            }
+                        }
+                    ], ephemeral: true
+                });
             }
+
         } else if(loopfunction === 'queue') {
+
             if (player.queueRepeat == true) {
+
                 await player.setQueueRepeat(false)
 
-                const RTA_Loopped = new EmbedBuilder()
-                    .setAuthor({ name: `✅ | เปลี่ยนการวนเพลงเป็น \`ปิด Queue-Loop\` เรียบร้อย`, iconURL: interaction.user.displayAvatarURL() })
-                    .setColor('Green')
+                return interaction.reply({
+                    embeds: [
+                        {
+                            author: {
+                                name: '❌ | \`Off Queue-Loop\`',
+                                icon_url: interaction.user.displayAvatarURL(),
+                            },
+                            color: #FF0000,
+                        }
+                    ], ephemeral: true
+                });
 
-                return interaction.reply({ embeds: [RTA_Loopped] });
             } else {
                 await player.setQueueRepeat(true)
-
-                const RTA_Loopped = new EmbedBuilder()
-                    .setAuthor({ name: `✅ | เปลี่ยนการวนเพลงเป็น \`เปิด Queue-Loop\` เรียบร้อย`, iconURL: interaction.user.displayAvatarURL() })
-                    .setColor('Green')
-
-                return interaction.reply({ embeds: [RTA_Loopped] });
+                
+                return interaction.reply({
+                    embeds: [
+                        {
+                            author: {
+                                name: '✅ | \`On Queue-Loop\`',
+                                icon_url: interaction.user.displayAvatarURL(),
+                            },
+                            color: rgb(0,255,0),
+                        }
+                    ], ephemeral: true
+                });
             }
           }
         } catch (e) {
             client.logger.danger(e)
-            errorReply.setColor('Red').setDescription('เกิดข้อผิดพลาดในการใช้คําสั่ง โปรดลองใช้คําสั่งอีกครั้ง');
-            return interaction.reply({ embeds: [errorReply],  ephemeral: false });
+
+            return interaction.reply({
+                embeds: [
+                    {
+                        color: #FF0000,
+                        description: `เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง | ${e}`,
+                        footer: {
+                            name: `Report By ${client.user.username}`,
+                            icon_url: interaction.user.displayAvatarURL(),
+                        }
+                    }
+                ], ephemeral: true
+            });
         }
     }
 }

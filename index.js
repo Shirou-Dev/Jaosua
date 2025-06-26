@@ -10,29 +10,18 @@ const client = new Client({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.GuildVoiceStates,
     ]
-  });
+});
 
-    client.i18n = new I18n({
-            defaultLocale: "th", // "en" = default language
-            directory: resolve("languages"), // <= location of language
-    })
-    client.config = require("./config.js");
-    client.logger = require("./function/logger");
-    client.button = require("./button.js");
-    client.setup = require("./models/Setup.js");
-
-    client.manager = new Manager({
-    clientName: "Jaosua-Manager",
-    shards: client.config.shard,
-    nodes: client.config.nodes,
-     send(id, payload) {
-         const guild = client.guilds.cache.get(id);
-         if (guild) guild.shard.send(payload);
-     },
- });
+client.i18n = new I18n({
+    defaulLocale: "th",
+    directory: resolve("languages"),
+})
+client.config = require("./config.js");
+client.logger = require("./function/logger.js");
+client.button = require("./button.js");
 
 client.on('guildCreate', (guild) => {
-    client.logger.info(`มีเชิฟเวอร์เข้ามาใหม่ -> ${guild.name} -> ${guild.id} -> มีสมาชิกทั้งหมด ${guild.memberCount} คน!`);
+    client.logger.info(`NewServer -> ${guild.name} -> ${guild.id} -> Member ${guild.memberCount} People.`);
 });
 
 ["slashcommand", "events", "loadDB","loadPlayer"].forEach(x => {
@@ -41,6 +30,6 @@ client.on('guildCreate', (guild) => {
 });
     
 
-client.logger.info(`Logging in . . .`)
+client.logger.info(`Logging To Jaosua. . .`)
 
 client.login(process.env.token || client.config.token)
