@@ -1,5 +1,4 @@
 const { EmbedBuilder } = require('discord.js');
-const JSA_Leave = require('./JSA_Leave');
 const errorReply = new EmbedBuilder();
 
 module.exports = {
