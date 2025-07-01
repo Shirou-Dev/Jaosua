@@ -21,7 +21,7 @@ module.exports = {
             return interaction.reply({
                 embeds: [
                 {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         title: "กรุณาเข้าห้องเสียงก่อนใข้งานบอท",
                         footer: {
                             text: client.user.username + " | Version " + client.config.version,
@@ -36,7 +36,7 @@ module.exports = {
             return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         title: `กรุณาเข้าห้องเสียงเดียวกับบอท ${client.user.username}`,
                         description: `<#${player.voiceChannel}>`,
                         footer: {
@@ -50,7 +50,7 @@ module.exports = {
         if (!player) return interaction.reply({
             embeds: [
                 {
-                    color: #FF0000,
+                    color: rgb(255, 0, 0),
                     title: `ไม่ได้เล่นเพลงอยู่ในขณะนี้ ${client.user.username}`,
                     footer: {
                         text: client.user.username + " | Version " + client.config.version,
@@ -79,7 +79,7 @@ module.exports = {
             return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         description: `เกิดข้อผิดพลาด โปรดลองใหมอีกครั้ง | ${e}`,
                         footer: {
                             name: `Report By ${client.user.username}`,

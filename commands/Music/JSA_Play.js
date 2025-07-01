@@ -46,7 +46,7 @@ try {
             return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         title: "กรุณาเข้าห้องเสียงก่อนใช้งานบอท",
                         footer: {
                             text: client.user.username + " | Version " + client.config.version,
@@ -61,7 +61,7 @@ try {
             return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         title: `กรุณาเข้าห้องเสียงเดียวกับบอท ${client.user.username}`,
                         description: `<#${player.voiceChannel}>`,
                         footer: {
@@ -105,7 +105,7 @@ try {
                         embeds: [
                             {
                                 description: `❌ \`|\` ไม่พบเพลงที่กําลังค้นหา \n\`${music}`,
-                                color: #FF0000,
+                                color: rgb(255, 0, 0),
                                 footer: {
                                     icon_url: interaction.user.displayAvatarURL()
                                 }
@@ -122,7 +122,7 @@ try {
                         embeds: [
                             {
                                 description: `❌ \`|\` ไม่พบชื่อเพลงที่กําลังค้นหา \n\`${music}`,
-                                color: #FF0000,
+                                color: rgb(255, 0, 0),
                                 footer: {
                                     icon_url: interaction.user.displayAvatarURL()
                                 }
@@ -147,7 +147,7 @@ try {
                                         name: `${client.user.username} Player | Add Queue`,
                                         icon_url: client.user.displayAvatarURL(),
                                     },
-                                    color: #FFFFFF,
+                                    color: rgb(255, 255, 255),
                                     fields: [
                                         {
                                             name: `${res.tracks[0].author} - ${res.tracks[0].isStream ? "🔴 ไลฟ์สด" : moment.duration(res.tracks[0].duration).format('hh:mm:ss')}`,
@@ -174,7 +174,7 @@ try {
                                         name: `${client.user.username} Player | Add Playlist`,
                                         icon_url: client.user.displayAvatarURL(),
                                     },
-                                    color: #FFFFFF,
+                                    color: rgb(255, 255, 255),
                                     fields: [
                                         {
                                             name: `${res.tracks.author} - ${res.tracks.isStream ? "🔴 ถ่ายทอดสด" : moment.duration(res.playlist.duration).format('hh:mm:ss')}`,
@@ -204,7 +204,7 @@ try {
                                         name: `${client.user.username} Player | Add Search Music`,
                                         icon_url: client.user.displayAvatarURL(),
                                     },
-                                    color: #FFFFFF,
+                                    color: rgb(255, 255, 255),
                                     fields: [
                                         {
                                             name: `${res.tracks[0].author} - ${res.tracks[0].isStream ? "🔴 ไลฟ์สด" : moment.duration(res.tracks[0].duration).format('hh:mm:ss')}`,

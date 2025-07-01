@@ -40,7 +40,7 @@ module.exports = {
             return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         title: "กรุณาเข้าห้องเสียงก่อนใช้งานบอท",
                         footer: {
                             text: client.user.username + " | Version " + client.config.version,
@@ -55,7 +55,7 @@ module.exports = {
             return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         title: `กรุณาเข้าห้องเสียงเดียวกับบอท ${client.user.username}`,
                         description: `<#${player.voiceChannel}>`,
                         footer: {
@@ -69,7 +69,7 @@ module.exports = {
         if (!player) return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         title:`ไม่ได้เล่นเพลงอยู่ในขณะนี้ ${client.user.username}`,
                         footer: {
                             text: client.user.username + " | Version " + client.config.version,
@@ -85,7 +85,7 @@ module.exports = {
             if(!queue) return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         author: {
                             name: '❌ | ไม่มีเพลงในคิว!!',
                             icon_url: interaction.user.displayAvatarURL(),
@@ -119,7 +119,7 @@ module.exports = {
                 return interaction.reply({
                     embeds: [
                         {
-                            color: #FF0000,
+                            color: rgb(255, 0, 0),
                             author: {
                                 name: '❌ | \`Off Song-Loop\`',
                                 icon_url: interaction.user.displayAvatarURL(),
@@ -142,7 +142,7 @@ module.exports = {
                                 name: '❌ | \`Off Queue-Loop\`',
                                 icon_url: interaction.user.displayAvatarURL(),
                             },
-                            color: #FF0000,
+                            color: rgb(255, 0, 0),
                         }
                     ], ephemeral: true
                 });
@@ -169,7 +169,7 @@ module.exports = {
             return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         description: `เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง | ${e}`,
                         footer: {
                             name: `Report By ${client.user.username}`,
