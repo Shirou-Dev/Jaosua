@@ -17,7 +17,7 @@ module.exports = {
             return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         title: "กรุณาเข้าห้องเสียงก่อนใช้งานบอท",
                         footer: {
                             text: client.user.username + " | Version " + client.config.version,
@@ -32,7 +32,7 @@ module.exports = {
             return interaction.reply({
                 embeds: [
                     {
-                        color: #FF0000,
+                        color: rgb(255, 0, 0),
                         title: `กรุณาเข้าห้องเสียงเดียวกับบอท ${client.user.username}`,
                         description: `<#${player.voiceChannel}>`,
                         footer: {
@@ -46,7 +46,7 @@ module.exports = {
         if (!player) return interaction.reply({
             embeds: [
                 {
-                    color: #FF0000,
+                    color: rgb(255, 0, 0),
                     title: `${client.user.username} ไม่ได้เล่นเพลงอยู่ในขณะนี้`,
                     footer: {
                         text: client.user.username + " | Version " + client.config.version,
@@ -61,7 +61,7 @@ module.exports = {
         const tracks = queue.slice(0,10);
 
         const JSAQueue = {
-                    color: #fef3c7,
+                    color: rgb(255, 255, 255),
                     author: {
                         name: `${client.user.username} Queue Player`,
                         icon_url: client.user.displayAvatarURL(),
@@ -114,7 +114,7 @@ module.exports = {
         return interaction.reply({
             embeds: [
                 {
-                    color: #FF0000,
+                    color: rgb(255, 0, 0),
                     description: `เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง | ${e}`,
                     footer: {
                         text: `Report By ${client.user.username}`,
