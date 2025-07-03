@@ -1,5 +1,3 @@
-const { EmbedBuilder } = require('discord.js');
-const errorReply = new EmbedBuilder();
 
 /**
      * 
@@ -20,37 +18,59 @@ module.exports = {
             
         if (!channel) {
             return interaction.reply({
-                embeds: [new EmbedBuilder()
-                    .setColor('Red')
-                    .setFooter({ text: client.user.username + " | Version " + client.config.version, iconURL: client.user.displayAvatarURL() })
-                    .setTitle(`กรุณาเข้าห้องเสียงก่อนใช้งานบอท`)
+                embeds: [
+                    {
+                        color: rgb(255, 0, 0),
+                        title: "กรุณาเข้าห้องเสียงก่อนใช้งานบอท",
+                        footer: {
+                            text: client.user.username + " | Version " + client.config.version,
+                            icon_url: client.user.displayAvatarURL()
+                        }
+                    }
                 ], ephemeral: false
             });
         }
 
         if (player && channel.id !== player.voiceChannel)
             return interaction.reply({
-                embeds: [new EmbedBuilder()
-                    .setColor("Red")
-                    .setFooter({ text: client.user.username + " | Version " + client.config.version, iconURL: client.user.displayAvatarURL() })
-                    .setTitle(`กรุณาเข้าห้องเสียงเดียวกับบอท ${client.user.username}`)
-                    .setDescription(`<#${player.voiceChannel}>`)
+                embeds: [
+                    {
+                        color: rgb(255, 0, 0),
+                        title: `กรุณาเข้าห้องเสียงเดียวกับบอท ${client.user.username}`,
+                        description: `<#${player.voiceChannel}`,
+                        footer: {
+                            text: client.user.username + " | Version " + client.config.version,
+                            icon_url: client.user.displayAvatarURL()
+                        }
+                    }
                 ], ephemeral: false
             });
 
         if (!player) return interaction.reply({
-            embeds: [new EmbedBuilder()
-                .setColor('Red')
-                .setFooter({ text: client.user.username + " | Version " + client.config.version, iconURL: client.user.displayAvatarURL() })
-                .setTitle(`${client.user.username} ไม่ได้เล่นเพลงอยู่ในขณะนี้`)
-            ], ephemeral: false
+            embeds: [
+                {
+                    color: rgb(255, 0, 0),
+                    title: `${client.user.username} ไม่ได้เล่นเพลงอยู่ในขณะนี้`,
+                    footer: {
+                        text: client.user.username + " | Version " + client.config.version,
+                        icon_url: client.user.displayAvatarURL()
+                    }
+                }
+            ], ephemeral: false               
         });
         
         player.pause(true);
         const RTA_Pause = new EmbedBuilder()
         .setAuthor({ name: `🎵 | หยุดเล่นเพลง`, iconURL: interaction.user.displayAvatarURL() })
         .setColor('Red')
-        await interaction.reply({ embeds: [RTA_Pause] });
+        await interaction.reply({
+            embeds: [
+                {
+                    
+                }
+            ]
+        
+        });
 
         }, catch (e) {
             client.logger.danger(e)
