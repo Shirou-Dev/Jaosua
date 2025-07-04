@@ -59,22 +59,31 @@ module.exports = {
             ], ephemeral: false               
         });
         
-        player.pause(true);
-        const RTA_Pause = new EmbedBuilder()
-        .setAuthor({ name: `🎵 | หยุดเล่นเพลง`, iconURL: interaction.user.displayAvatarURL() })
-        .setColor('Red')
-        await interaction.reply({
+        if (player.pause(true)) await interaction.reply({
             embeds: [
                 {
-                    
+                    color: rgb(255,0,0),
+                    author: {
+                        name: "🎶 | หยุดเล่นเพลง",
+                        icon_url: interaction.user.displayAvatarURL(),
+                    }
                 }
-            ]
-        
+            ], ephemeral: false
         });
 
         }, catch (e) {
             client.logger.danger(e)
-            errorReply.setColor('Red').setDescription('เกิดข้อผิดพลาดในการใช้คําสั่ง โปรดลองใช้คําสั่งอีกครั้ง');
-            return interaction.reply({ embeds: [errorReply],  ephemeral: false });
+            return interaction.reply({
+                embeds: [
+                    {
+                        color: rgb(255,0,0),
+                        description: `เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง \n${e}`,
+                        footer: {
+                            text: `Report By ${interaction.user.username}`,
+                            icon_url: interaction.user.displayAvatarURL(),
+                        }
+                    }
+                ], ephemeral: true
+            })
         }
     }

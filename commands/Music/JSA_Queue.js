@@ -109,17 +109,17 @@ module.exports = {
 
     }, catch (e) {
         client.logger.danger(e)
-        errorReply.setColor('Red').setDescription('เกิดข้อผิดพลาดในการใช้คําสั่ง โปรดลองใช้คําสั่งอีกครั้ง');
         return interaction.reply({
             embeds: [
                 {
                     color: rgb(255, 0, 0),
-                    description: `เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง | ${e}`,
+                    description: `เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง \n${e}`,
                     footer: {
-                        text: `Report By ${client.user.username}`,
+                        text: `Report By ${interaction.user.username}`,
                         icon_url: interaction.user.displayAvatarURL(),
                     }
                 }
-            ],  ephemeral: false });
+            ],  ephemeral: true
+        });
     }
 }
