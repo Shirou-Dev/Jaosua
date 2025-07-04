@@ -1,6 +1,10 @@
-const { EmbedBuilder } = require('discord.js');
-const errorReply = new EmbedBuilder();
 
+/**
+    *
+    * @param {import("discord.js").Client} client
+    * @param {import("discord.js").Interaction} interaction 
+    */
+   
 module.exports = {
     data: {
         name: "คิวเพลง",
